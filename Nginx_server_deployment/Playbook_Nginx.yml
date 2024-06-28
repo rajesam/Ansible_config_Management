@@ -1,0 +1,17 @@
+---
+- name: first play
+  hosts: web
+  remote_user: root
+  tasks:
+  - name: instalnginx
+    dnf:
+      name: nginx
+      state: present
+  - name: servicestart
+    service:
+      name: nginx
+      state: started
+  - name: codecopy
+    copy:
+      src: /var/tmp/index.html
+      dest: /usr/share/nginx/html/index.html
